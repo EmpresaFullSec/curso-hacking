@@ -108,5 +108,27 @@ cursor: pointer;
       document.getElementById("data").textContent = dataFormatada;
     }
   </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+  function gerarCertificado() {
+    const nome = document.getElementById("input-nome").value;
+    if (!nome.trim()) return alert("Digite seu nome completo.");
+
+    document.getElementById("nome-aluno").textContent = nome;
+    const hoje = new Date();
+    const dataFormatada = hoje.toLocaleDateString('pt-BR');
+    document.getElementById("data").textContent = dataFormatada;
+
+    setTimeout(() => {
+      const element = document.querySelector(".certificado");
+      html2pdf().set({
+        margin: 1,
+        filename: `Certificado-${nome}.pdf`,
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      }).from(element).save();
+    }, 500); // espera 0.5s pra garantir que o nome foi renderizado
+  }
+</script>
 </body>
 </html>
