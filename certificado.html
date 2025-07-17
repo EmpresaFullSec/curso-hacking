@@ -28,3 +28,85 @@
   </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificado</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .certificado {
+      background: #222;
+      border: 2px solid #0f0;
+      padding: 30px;
+      margin: auto;
+      max-width: 700px;
+      border-radius: 10px;
+    }
+
+    .certificado h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #0f0;
+    }
+
+    .certificado p {
+      font-size: 18px;
+    }
+
+    #nome-aluno {
+      font-weight: bold;
+      color: #0f0;
+      font-size: 22px;
+    }
+
+    input {
+      padding: 10px;
+      margin-top: 20px;
+      width: 60%;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #0f0;
+      color: #000;
+      border: none;
+      font-size: 16px;
+
+cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificado">
+    <h1>Certificado de Conclusão</h1>
+    <p>Certificamos que <span id="nome-aluno">__</span> concluiu com êxito o curso de Hacking Ético da FullSec.</p>
+    <p>Emitido em: <span id="data"></span></p>
+
+    <input type="text" id="input-nome" placeholder="Digite seu nome completo">
+    <br>
+    <button onclick="gerarCertificado()">Gerar Certificado</button>
+  </div>
+
+  <script>
+    function gerarCertificado() {
+      const nome = document.getElementById("input-nome").value;
+      document.getElementById("nome-aluno").textContent = nome;
+      const hoje = new Date();
+      const dataFormatada = hoje.toLocaleDateString('pt-BR');
+      document.getElementById("data").textContent = dataFormatada;
+    }
+  </script>
+</body>
+</html>
